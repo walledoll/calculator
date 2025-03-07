@@ -151,6 +151,13 @@ plus.addEventListener("click", ()=>{
 		display.textContent = "";
 		previousValue.textContent = a + "+";
 	}
+	else{
+		a = Number(previousValue.textContent.slice(0,previousValue.textContent.length - 1));
+		b = Number(display.textContent);
+		sign = "plus";
+		display.textContent = a + b;
+		previousValue.textContent = "";
+	}
 })
 
 min.addEventListener("click", ()=>{
@@ -159,6 +166,13 @@ min.addEventListener("click", ()=>{
 		sign = "min";
 		display.textContent = "";
 		previousValue.textContent = a + "-";
+	}
+	else{
+		a = Number(previousValue.textContent.slice(0,previousValue.textContent.length - 1));
+		b = Number(display.textContent);
+		sign = "min";
+		display.textContent = a - b;
+		previousValue.textContent = "";
 	}
 })
 
@@ -169,6 +183,13 @@ mul.addEventListener("click", ()=>{
 		display.textContent = "";
 		previousValue.textContent = a + "*";
 	}
+	else{
+		a = Number(previousValue.textContent.slice(0,previousValue.textContent.length - 1));
+		b = Number(display.textContent);
+		sign = "mul";
+		display.textContent = a * b;
+		previousValue.textContent = "";
+	}
 })
 
 div.addEventListener("click", ()=>{
@@ -178,12 +199,26 @@ div.addEventListener("click", ()=>{
 		display.textContent = "";
 		previousValue.textContent = a + "/";
 	}
+	else{
+		a = Number(previousValue.textContent.slice(0,previousValue.textContent.length - 1));
+		b = Number(display.textContent);
+		sign = "div";
+		if(b === 0){
+			display.textContent = "Error";
+			previousValue.textContent = "";
+		}
+		else{
+			console.log(parseFloat(a / b));
+			display.textContent = Math.floor(parseFloat(a / b)*100000000)/100000000;
+			previousValue.textContent = "";
+		}
+	}
 })
 
 perc.addEventListener("click",()=>{
-	a = Number(display.textContent);
-	display.textContent = "";
-	display.textContent = parseFloat(a / 100);
+		a = Number(display.textContent);
+		display.textContent = "";
+		display.textContent = parseFloat(a / 100);
 })
 
 equal.addEventListener("click", () =>{
